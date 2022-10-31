@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/login.js" defer></script>
+    <link rel="stylesheet" href="/css/login.css"> 
+    <title>로그인</title>
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">로그인</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">회원가입</label>
+            <div class="login-form">
+                <form action="/auth/loginProc" method="post">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">아이디</label>
+                            <input id="userId" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">비밀번호</label>
+                            <input id="psword" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <input type="button" class="button" id="loginBtn" value="로그인">
+                        </div>
+                        <div class="hr"></div>
+    
+                    </div>
+                </form>
+                <div class="sign-up-htm">                    
+                        <div class="group">
+                            <label for="user" class="label">아아디</label>
+                            <input id="joinUserId" name="joinUserId" type="text" class="input" value="asd123">
+                            <button type="button" id="idDoubleChkBtn">중복확인</button>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">비밀번호</label>
+                            <input id="joinPsword" name="joinPsword" type="password" class="input" data-type="password" value="asd123">
+                            
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">비밀번호 확인</label>
+                            <input id="joinPswordRe" type="password" class="input" data-type="password" value="asd123">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">이름</label>
+                            <input id="joinUserName" name="name" type="text" class="input" value="하하">
+                        </div>
+                        <div class="group">
+                            <input type="button" id="joinBtn" class="button" value="가입하기">
+                        </div>
+                        <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
