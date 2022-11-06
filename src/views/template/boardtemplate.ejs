@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/boardTemplate.js" defer></script>
+    <title><%=title%></title>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        .side_bar {
+            text-align: center;   
+        }
+        .container{
+            background-color: #50BCDF;
+        }
+        .content {
+            margin : 50px;
+            padding : 50px;            
+            display: flex;            
+        }
+
+        .userInfo {
+            margin : 10px;
+            min-height: 170px;
+            min-width: 170px;
+            background-color: #90BCDF;
+            padding : 10px;
+        }
+
+        .userInfo li{
+            margin : 10px;
+        }
+
+        .category {
+            margin : 10px;
+            padding: 10px;
+            background-color: #90BCDF;
+        }
+
+        .category li {
+            margin : 10px;
+        }
+        .board_content{
+            text-align: center;
+            min-width: 700px;
+            padding : 10px;
+            background-color: #90BCDF;
+        }
+
+        .board_content li{
+            background-color: #FFFFFF;
+            border : 1px solid black;
+            border-collapse: collapse;
+            padding : 10px;
+            margin : 5px;
+        }
+        .write_div{
+            width: 100%;
+            text-align: right;            
+        }
+
+        .write_btn{
+            padding : 10px;
+            margin : 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="side_bar">
+                <div class="userInfo">
+                    <li>이름</li>
+                    <li>로그아웃</li>
+                </div>
+                <div class="category">
+                    <li>전체</li>
+                    <li>자유</li>
+                    <li>유머</li>                
+                </div>
+            </div>
+            <div class="board_content">
+                <%-include(`../${view}`) %>
+            </div>
+        </div>
+        <div class="write_div">
+            <span class="write_btn" id="writeBtn">글쓰기</span>
+        </div>
+    </div>
+</body>
+</html>

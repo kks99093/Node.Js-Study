@@ -16,6 +16,47 @@ const joinUserId = document.querySelector("#joinUserId"),
 
 idDoubleChkBtn.addEventListener("click", doubleChk);    
 joinUserId.addEventListener("keyup", idConfirmChkFalse);
+joinBtn.addEventListener("click", joinSubmit)
+loginBtn.addEventListener("click", loginProc);
+
+
+function loginProc(){
+    if(userId.value === "" || userId.value === undefined){
+        alert('아이디를 입력해 주세요');
+        return;
+    }else if(psword.value === "" || psword.value === undefined){
+        alert('비밀번호를 입력해 주세요')
+        return;
+    }else{    
+        const data = {
+            userId : userId.value,
+            psword : psword.value
+        }
+        fetch("/user/loginProc",{
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(data)
+        })
+        .then((res) => res.json())
+        .then((res) =>{
+            if(res.success){
+                if(res.state === 0){
+                    alert('아이디 또는 비밀번호를 확인해 주세요');
+                }else{
+                    location.href = "/";
+                }
+            }else{
+                alert('로그인 할 수 없습니다.')
+                return
+            }
+        })
+
+
+    }
+}
+
 
 
 function doubleChk(){
@@ -59,7 +100,6 @@ function idConfirmChkFalse(){
 }
 
 
-joinBtn.addEventListener("click", joinSubmit)
 
 function joinSubmit(){
     if(!idConfirmChk){
