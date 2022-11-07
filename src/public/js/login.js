@@ -128,7 +128,7 @@ function joinSubmit(){
         .then((res) => {
             if(res.success){
                 alert("가입 되셨습니다.")
-                location.href = "/";
+                location.href = "/user/login";
             }else{
                 alert("가입에 실패했습니다.")
             }            

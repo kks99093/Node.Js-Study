@@ -1,7 +1,7 @@
 "use strict";
 
-const { resolveInclude } = require("ejs");
-const db = require("../config/db");
+
+const db = require("../../config/db");
 
 class UserStorage{
     

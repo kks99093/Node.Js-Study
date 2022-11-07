@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/css/totalboard.css">
+<script src="/js/board.js"></script>
+<div class="totalboard_div">
+    <h1>전체 게시판</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="num_th">No</th>
+                    <th class="title_th">제목</th>
+                    <th class="author_th">글쓴이</th>
+                    <th class="create_th">등록날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < boardList.length; i++){
+                    let boardInfo = boardList[i];                
+                %>
+                <tr>
+                    <td><%=boardInfo.boardPk%></td>
+                    <td><%=boardInfo.title%></td>
+                    <td><%=boardInfo.name%></td>
+                    <td><%=boardInfo.createDate%></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <div class="page_div">
+            <% for(let i = 1; i <= page.totalPage; i++){
+            %>
+                <span onclick="pagemove(<%=i%>)"><%=i%></span>
+            <%} %>
+        </div>
+    </div>
+
+</div>

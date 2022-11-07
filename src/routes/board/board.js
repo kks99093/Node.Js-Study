@@ -3,7 +3,10 @@ const express = require("express");
 const routes  = express.Router();
 const ctrl = require("./board.ctrl");
 
-routes.get("/totalboard", ctrl.output.totalBoard);
+routes.get("/board", ctrl.output.board);
 routes.get("/write", ctrl.output.write)
+
+
+routes.post("/writeProc", ctrl.process.write);
 
 module.exports = routes;

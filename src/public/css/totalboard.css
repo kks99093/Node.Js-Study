@@ -1,0 +1,30 @@
+.totalboard_div{
+    width : 100%;
+}
+table{
+    width : 100%;
+}
+
+tr {
+    background-color: #FFFFFF;    
+}
+
+th, td{
+    padding: 10px;
+}
+
+.num_th{
+    width: 10%;
+}
+
+.title_th{
+    width: 55%;
+}
+
+.author_th{
+    width: 15%;
+}
+
+.author_th{
+    width: 15%;
+}

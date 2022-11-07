@@ -1,0 +1,23 @@
+.title_div{
+    margin : 10px;
+    width: 100%;
+}
+
+.title_span{
+    width : 10%;
+}
+
+.title_input{
+    margin: 10px;
+    width : 60%;
+    padding: 10px;
+    border: none;
+}
+
+.content_input{
+    width : 90%;
+    min-height: 200px;
+    border : none;
+    resize: none;
+    margin : 10px;        
+}
