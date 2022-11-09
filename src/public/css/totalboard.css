@@ -28,3 +28,12 @@ th, td{
 .author_th{
     width: 15%;
 }
+
+.disable_evt{
+    pointer-events : none;
+    opacity: 0.7;
+}
+
+.cursor_pointer{
+    cursor: pointer;
+}

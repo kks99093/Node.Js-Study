@@ -1,0 +1,16 @@
+<script src="/js/detail.js" defer></script>
+<link rel="stylesheet" href="/css/detail.css">
+<div class="board_detail_top_div">
+    <div class="board_title_div"><span class="board_title_span"><%=boardDetail.title%></span></div>
+    <div class="board_category_span"><span class="board_category_span">카테고리</span></div>
+    <input type="hidden" value="<%=boardDetail.boardPk%>" id="boardPk">
+</div>
+<div class="content_div">
+    <span><%=boardDetail.content%></span>
+</div>
+<% if(userPk == boardDetail.userPk){%>
+    <div class="button_div">
+        <button type="button" id="update_btn">수정</button>
+        <button type="button" id="delete_btn">삭제</button>
+    </div>    
+<%} %>

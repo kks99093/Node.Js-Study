@@ -2,20 +2,25 @@
 
 const title = document.querySelector("#title"),
     content = document.querySelector("#content"),
-    category = document.querySelector("#category");
     write_btn = document.querySelector("#write_btn");
 
 
 write_btn.addEventListener("click", writeProc);
 
 function writeProc(){
-    const data = {
+    const boardPk = document.querySelector("#boardPk");
+    let data = {
         title : title.value,
         content : content.value,
-        category : category.value
     }
-
-    fetch("/board/writeProc",{
+    let addr = ""
+    if(boardPk != undefined){
+        data.boardPk = boardPk.value
+        addr = "/board/updateProc"
+    }else{
+        addr = "/board/writeProc"
+    }
+    fetch(addr,{
         method : "POST",
         headers : {
             "Content-Type" : "application/json"

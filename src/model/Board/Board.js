@@ -1,5 +1,6 @@
 "use strict"
 
+const { deleteBoard } = require("./BoardStorage");
 const BoardStorage = require("./BoardStorage");
 
 class Board{
@@ -39,13 +40,11 @@ class Board{
     }
 
     async getPageInfo(queryData){
-        console.log(queryData);
         let page = {
             size : 2
         }
         queryData.currentPage == undefined ? (page.currentPage = 1) : (page.currentPage = queryData.currentPage);
 
-        console.log(page);
         try{        
             if(page == undefined){
                 
@@ -60,6 +59,74 @@ class Board{
             }
         }
     }
+
+    async getBoardDetail(queryData){
+        const boardPk = queryData.boardPk;
+
+        if(boardPk == undefined || boardPk == 0){
+            return{
+                success : false,
+                msg : "해당 게시판을 찾을 수 없습니다."
+            }
+        }else{
+            try{
+                const result = await BoardStorage.getBoardDetail(boardPk);
+                return result;
+            }catch(err){
+                return{
+                    success : false,
+                    msg : "오류가 발생했습니다."
+                }
+            }
+        }
+    }
+
+    async deleteBoard(){
+
+        const body = this.body;
+        try{
+            const board = await BoardStorage.getBoardDetail(body.boardPk);                
+            if(board.userPk != this.userPk){                    
+                return{
+                    success: false,
+                    msg : "해당 글의 작성자가 아닙니다."
+                }
+            }else{
+                const result = await BoardStorage.deleteBoard(body.boardPk);
+                return result;
+            }                
+        }catch(err){
+            console.log(err)
+            return{
+                success : false,
+                msg: "오류가 발생했습니다."
+            }
+        }
+    }
+
+    async update(){
+        const body = this.body;
+        try{
+            const board = await BoardStorage.getBoardDetail(body.boardPk);                
+            if(board.userPk != this.userPk){                    
+                return{
+                    success: false,
+                    msg : "해당 글의 작성자가 아닙니다."
+                }
+            }else{
+                const result = await BoardStorage.updateBoard(body);
+                return result;
+            }  
+
+        }catch(err){
+            console.log(err);
+            return{
+                success :false,
+                msg : "오류가 발생했습니다."
+            }
+        }
+    }
+
 
 }
 

@@ -1,17 +1,18 @@
 <script src="/js/write.js" defer></script>
 <link rel="stylesheet" href="/css/write.css">
-<h1>글쓰기</h1>
+<h1><%=title%></h1>
 <div class="title_div">
-    <span class="title_span">제목 : <input class="title_input" tpye="text" id="title"></span>
-    <select id="category">
-        <option value="1">자유</option>
-        <option value="2">유머</option>
-    </select>
+    <span class="title_span">제목 : <input class="title_input" tpye="text" id="title"
+        value="<% if(boardDetail != undefined){%> <%=boardDetail.title%> <% } %>"></span>
 </div>
 <div class="content_div">
     <textarea class="content_input" id="content">
+        <% if(boardDetail != undefined){%> <%=boardDetail.content%> <% } %>
     </textarea>
 </div>
+<% if(boardDetail != undefined){%>
+    <input type="hidden" value="<%=boardDetail.boardPk%>" id="boardPk">
+<% } %>
 <div class="write_btn_div">
     <button type="button" id="write_btn">등록</button>
 </div>

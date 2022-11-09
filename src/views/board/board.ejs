@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/totalboard.css">
-<script src="/js/board.js"></script>
+<script src="/js/board.js" defer></script>
 <div class="totalboard_div">
-    <h1>전체 게시판</h1>
+    <h1>게시판</h1>
     <div>
         <table>
             <thead>
@@ -18,18 +18,22 @@
                 %>
                 <tr>
                     <td><%=boardInfo.boardPk%></td>
-                    <td><%=boardInfo.title%></td>
+                    <td onclick="detailPage(<%=boardInfo.boardPk%>)"><%=boardInfo.title%></td>
                     <td><%=boardInfo.name%></td>
                     <td><%=boardInfo.createDate%></td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
-        <div class="page_div">
+        <div class="page_div">            
+            <span class="<% if(page.currentPage == 1){%>disable_evt<%}else{%>cursor_pointer<%}%>" 
+                onclick="pagemove(<%=page.currentPage-1%>)">이전</span>
             <% for(let i = 1; i <= page.totalPage; i++){
             %>
-                <span onclick="pagemove(<%=i%>)"><%=i%></span>
+                <span class="cursor_pointer" onclick="pagemove(<%=i%>)"><%=i%></span>
             <%} %>
+            <span class="<% if(page.currentPage == page.totalPage){%>disable_evt<%}else{%>cursor_pointer<%}%>"
+                onclick="pagemove(<%=page.currentPage+1%>)">다음</span>
         </div>
     </div>
 

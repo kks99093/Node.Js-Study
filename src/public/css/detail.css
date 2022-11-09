@@ -1,0 +1,30 @@
+.board_detail_top_div{
+    width: 100%;
+    margin : 10px;
+    display: flex;
+}
+.board_title_div{
+    width: 70%;
+    background-color: #FFFFFF;
+    margin : 10px;
+    padding : 10px;
+}
+
+.board_category_span{
+    width: 15%;
+    background-color: #FFFFFF;
+    margin : 10px;
+    padding : 10px;
+}
+
+.content_div{
+    margin: 10px 20px;
+    width: 90%;
+    overflow: auto;
+    height: 300px;
+    background-color: #FFFFFF;
+}
+
+.button_div{
+    float: right;
+}

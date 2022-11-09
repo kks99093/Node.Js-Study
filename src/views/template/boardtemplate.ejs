@@ -74,13 +74,8 @@
         <div class="content">
             <div class="side_bar">
                 <div class="userInfo">
-                    <li>이름</li>
-                    <li>로그아웃</li>
-                </div>
-                <div class="category">
-                    <li>전체</li>
-                    <li>자유</li>
-                    <li>유머</li>                
+                    <li><%=userInfo.name%></li>
+                    <li id="logout_btn" class="cursor_pointer">로그아웃</li>
                 </div>
             </div>
             <div class="board_content">
@@ -91,5 +86,12 @@
             <span class="write_btn" id="writeBtn">글쓰기</span>
         </div>
     </div>
+    <script defer>
+        const logout_btn = document.querySelector("#logout_btn");
+        logout_btn.addEventListener("click", logout);
+        function logout(){
+            location.href = "/user/logout";
+        }
+    </script>
 </body>
 </html>

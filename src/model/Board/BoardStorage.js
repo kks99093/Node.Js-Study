@@ -5,8 +5,8 @@ class BoardStorage{
 
     static save(boardInfo){
         return new Promise((resolve, reject) =>{
-            const queryStr = " INSERT INTO basicboard.board ( title, content, userPk, category ) VALUES (?, ?, ?, ?) ";
-            db.query(queryStr, [boardInfo.title, boardInfo.content, boardInfo.userPk, boardInfo.category], (err)=>{
+            const queryStr = " INSERT INTO basicboard.board ( title, content, userPk) VALUES (?, ?, ?) ";
+            db.query(queryStr, [boardInfo.title, boardInfo.content, boardInfo.userPk], (err)=>{
                 if(err)reject(`${err}`);
                 resolve({ success : true});
             })
@@ -34,6 +34,37 @@ class BoardStorage{
             db.query(queryStr, [], (err, data) =>{
                 if(err)reject(`${err}`);
                 resolve(data[0]);
+            })
+        })
+    }
+
+    static getBoardDetail(boardPk){
+        const queryStr = " SELECT * FROM basicboard.board WHERE boardPk = ? ";
+        return new Promise((resolve, reject)=>{
+            db.query(queryStr, [boardPk], (err, data) =>{
+                if(err)reject(`${err}`);
+                resolve(data[0]);
+            })
+        })
+
+    }
+
+    static deleteBoard(boardPk){
+        const queryStr = " DELETE FROM basicboard.board WHERE boardPk = ? ";
+        return new Promise((resolve, reject) => {
+            db.query(queryStr, [boardPk], (err) => {
+                if(err)reject(`${err}`);
+                resolve ({ success : true })
+            })
+        })
+    }
+
+    static updateBoard(boardInfo){
+        const queryStr = " UPDATE basicboard.board SET title = ?, content = ? WHERE boardPk = ? ";
+        return new Promise((resolve, reject) => {
+            db.query(queryStr, [boardInfo.title, boardInfo.content, boardInfo.boardPk], (err) =>{
+                if(err)reject(`${err}`);
+                resolve({ success : true})
             })
         })
     }
